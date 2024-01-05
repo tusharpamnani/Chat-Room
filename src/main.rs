@@ -62,6 +62,6 @@ async fn events(queue: &State<Sender<Message>>, mut end: Shutdown) -> EventStrea
 fn rocket() -> _ {
     rocket::build()
         .manage(channel::<Message>(1024).0) // Create a channel for broadcasting messages
-        .mount("/", routes![post, events]) // Define routes for handling POST and GET requests
+        .mount("https://chat-room-alpha-five.vercel.app/", routes![post, events]) // Define routes for handling POST and GET requests
         .mount("/", FileServer::from(relative!("static"))) // Serve static files from the "static" directory
 }
